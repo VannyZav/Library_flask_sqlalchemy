@@ -1,13 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
-  <h2>Книги</h2>
+  <h2>Все книги</h2>
     {%- for book in Book %}
       <ul>
-        <li> Название: {{ Book.name }} </li>
-        <li>
-          <a href="{{ url_for('employees_by_department', department_id=employee.department.id) }}">Отдел: {{ employee.department.name }}</a>
-        </li>
-        <li> Добавлен: {{ employee.added.strftime("%d-%m-%Y") }} </li>
+        <li> Название: {{ book.name }} </li>
+        <li> Автор: {{ book.author }} </li>
       </ul>
       <hr>
     {%- endfor %}
