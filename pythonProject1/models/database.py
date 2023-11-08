@@ -17,13 +17,13 @@ class Genre(db.Model):
     books = relationship("Book", back_populates="genre")
 
     def __repr__(self):
-        return f'Genre(name={self.name!r})'
+        return self.name
 
 
 class Book(db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String, unique=True, nullable=False)
-    author: Mapped[str] = mapped_column(String)
+    author: Mapped[str] = mapped_column(String, nullable=True)
     genre_id: Mapped[int] = mapped_column(Integer, ForeignKey('genre.id', ondelete="SET NULL"))
     genre = relationship("Genre", back_populates="books")
 
