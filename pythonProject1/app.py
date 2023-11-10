@@ -46,7 +46,7 @@ with app.app_context():
 
 @app.route("/")
 def all_books():
-    books = db.session.execute(db.select(Book).order_by(Book.id)).scalars()
+    books = Book.query.order_by(Book.id.desc()).limit(15).all()
     return render_template("Books.html", books=books)
 
 
